@@ -1,0 +1,49 @@
+
+<%- include('head.ejs') %>
+<%- include('banner.ejs') %>
+
+    <!--new-arrivals start -->
+    <section id="new-arrivals" class="new-arrivals">
+      <div class="container">
+        <div class="section-header">
+          <h2>new arrivals</h2>
+        </div>
+        <!--/.section-header-->
+        <div class="new-arrivals-content">
+          <div class="row">
+
+            <% products.map(product => { %>
+              <div class="col-md-3 col-sm-4">
+                      <div class="single-new-arrival">
+                      <div class="single-new-arrival-bg">
+                      <img src="/images/<%= product.imgUrl %>" alt="new-arrivals images" />
+                      <div class="single-new-arrival-bg-overlay"></div>
+              <div class="sale <%= (product.onSale === 1)?'bg-1':'bg-2' %>">
+                <p>sale</p>
+              </div>
+
+              <div class="new-arrival-cart">
+                <p>
+                  <span class="lnr lnr-cart"></span>
+                  <a href="/addToCart/<%= product.id %>">add <span>to </span> cart</a>
+                </p>
+                <p class="arrival-review pull-right">
+                  <span class="lnr lnr-heart"></span>
+                  <span class="lnr lnr-frame-expand"></span>
+                </p>
+              </div>
+            </div>
+              <h4><a href="#"><%= product.title %></a></h4>
+              <p class="arrival-product-price">$<%= product.price %></p>
+            </div>
+            </div>
+           <% }) %>
+          </div>
+        </div>
+      </div>
+      <!--/.container-->
+    </section>
+    <!--/.new-arrivals-->
+    <!--new-arrivals end -->
+
+<%- include('foot.ejs')%>
